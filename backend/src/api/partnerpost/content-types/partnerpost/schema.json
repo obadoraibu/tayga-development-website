@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partner_posts",
+  "info": {
+    "singularName": "partnerpost",
+    "pluralName": "partnerposts",
+    "displayName": "Partner Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "preview_text": {
+      "type": "text",
+      "required": false
+    },
+    "content": {
+      "type": "richtext",
+      "required": false
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
+
+
+

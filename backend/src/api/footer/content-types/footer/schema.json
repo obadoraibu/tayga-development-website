@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": "Подвал сайта"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "address": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "whatsapp_link": {
+      "type": "string"
+    },
+    "telegram_link": {
+      "type": "string"
+    },
+    "social_text": {
+      "type": "text"
+    },
+    "copyright_text": {
+      "type": "string"
+    },
+    "privacy_link": {
+      "type": "string"
+    },
+    "developer_name": {
+      "type": "string"
+    },
+    "developer_link": {
+      "type": "string"
+    }
+  }
+}
+
+
+
+

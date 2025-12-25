@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apartments",
+  "info": {
+    "singularName": "apartment",
+    "pluralName": "apartments",
+    "displayName": "Apartment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": false
+    },
+    "area": {
+      "type": "decimal",
+      "required": true
+    },
+    "floor": {
+      "type": "integer",
+      "required": true
+    },
+    "rooms": {
+      "type": "integer",
+      "required": true
+    },
+    "section": {
+      "type": "integer",
+      "required": true
+    },
+    "status": {
+      "type": "string"
+    },
+    "renovation": {
+      "type": "enumeration",
+      "enum": [
+        "without_repair",
+        "whitebox",
+        "full_repair"
+      ]
+    },
+    "ceiling_height": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "layout_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "project": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "apartments"
+    }
+  }
+}
+

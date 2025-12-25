@@ -1,1 +1,0 @@
-# tayga-development-website

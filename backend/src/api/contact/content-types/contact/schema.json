@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact Section",
+    "description": "Секция контактов"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Остались вопросы?"
+    },
+    "description": {
+      "type": "text"
+    },
+    "office_label": {
+      "type": "string",
+      "default": "Офис продаж"
+    },
+    "office_address": {
+      "type": "string"
+    },
+    "phone_label": {
+      "type": "string",
+      "default": "Телефон"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "form_button_text": {
+      "type": "string",
+      "default": "Получить консультацию"
+    },
+    "form_success_title": {
+      "type": "string",
+      "default": "Заявка отправлена!"
+    },
+    "form_success_text": {
+      "type": "string",
+      "default": "Мы скоро перезвоним вам."
+    },
+    "privacy_text": {
+      "type": "text"
+    }
+  }
+}
+
+
+
+

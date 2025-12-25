@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero",
+  "info": {
+    "singularName": "hero",
+    "pluralName": "heroes",
+    "displayName": "Hero Section",
+    "description": "Главный экран сайта"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string",
+      "default": "Строительная компания"
+    },
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "button1_text": {
+      "type": "string",
+      "default": "Выбрать квартиру"
+    },
+    "button1_link": {
+      "type": "string",
+      "default": "/#projects"
+    },
+    "button2_text": {
+      "type": "string",
+      "default": "О проектах"
+    },
+    "button2_link": {
+      "type": "string",
+      "default": "/#projects"
+    },
+    "background_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
+
+
+
+

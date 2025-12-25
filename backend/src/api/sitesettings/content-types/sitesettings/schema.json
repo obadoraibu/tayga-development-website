@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "sitesettings",
+    "pluralName": "settings",
+    "displayName": "Site Settings",
+    "description": "Общие настройки сайта"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "site_name": {
+      "type": "string"
+    },
+    "site_description": {
+      "type": "text"
+    },
+    "default_phone": {
+      "type": "string"
+    },
+    "default_email": {
+      "type": "email"
+    },
+    "default_address": {
+      "type": "string"
+    }
+  }
+}
+
