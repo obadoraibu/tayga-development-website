@@ -69,3 +69,4 @@ docker-compose down
 
 Подробные инструкции в `DOCKER_SETUP.md` и `DATABASE_MIGRATION.md`
 
+

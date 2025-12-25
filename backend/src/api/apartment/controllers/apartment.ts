@@ -9,3 +9,4 @@ export default factories.createCoreController('api::apartment.apartment');
 
 
 
+

@@ -75,3 +75,4 @@ curl http://localhost:1337/api/hero?populate=*
 
 
 
+

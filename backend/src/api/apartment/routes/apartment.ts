@@ -9,3 +9,4 @@ export default factories.createCoreRouter('api::apartment.apartment');
 
 
 
+

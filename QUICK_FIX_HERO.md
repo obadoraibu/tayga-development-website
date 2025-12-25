@@ -85,3 +85,4 @@ http://localhost:1337/api/hero?populate[background_image]=*
 
 
 
+
