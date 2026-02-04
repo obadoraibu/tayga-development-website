@@ -6,7 +6,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import Button from "../ui/Button";
 import Logo from "../ui/Logo";
 
-export default function Header() {
+const DEFAULT_PHONE = "+7 (4162) 57-75-75";
+const DEFAULT_SCHEDULE = "Ежедневно с 9:00 до 21:00";
+
+interface HeaderProps {
+  /** Телефон из Strapi (footer/contact). Если не передан — используется fallback. */
+  phone?: string | null;
+  /** Время работы из Strapi (footer/contact). Если не передан — используется fallback. */
+  schedule?: string | null;
+}
+
+export default function Header({ phone, schedule }: HeaderProps) {
+  const displayPhone = phone?.trim() || DEFAULT_PHONE;
+  const telHref = `tel:${displayPhone.replace(/\s/g, "")}`;
+  const displaySchedule = schedule?.trim() || DEFAULT_SCHEDULE;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Состояние меню
 
@@ -55,9 +68,9 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-4 relative z-50 flex-shrink-0 ml-auto">
-            <a href="tel:+70000000000" className="hidden lg:flex items-center gap-2 text-white hover:text-taiga-accent transition-colors">
+            <a href={telHref} className="hidden lg:flex items-center gap-2 text-white hover:text-taiga-accent transition-colors">
               <Phone size={18} />
-              <span className="font-heading font-bold">+7 (4162) 57-75-75</span>
+              <span className="font-heading font-bold">{displayPhone}</span>
             </a>
             
             {/* Кнопка Меню (Бургер) */}
@@ -112,8 +125,8 @@ export default function Header() {
               transition={{ delay: 0.5 }}
               className="mt-12 pt-12 border-t border-white/10"
             >
-              <a href="tel:+79990000000" className="text-taiga-accent text-2xl font-bold block mb-2">+7 (999) 000-00-00</a>
-              <p className="text-white/50">Ежедневно с 9:00 до 21:00</p>
+              <a href={telHref} className="text-taiga-accent text-2xl font-bold block mb-2">{displayPhone}</a>
+              <p className="text-white/50">{displaySchedule}</p>
             </motion.div>
           </motion.div>
         )}

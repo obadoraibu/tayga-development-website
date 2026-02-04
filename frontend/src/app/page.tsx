@@ -58,7 +58,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-taiga-light">
-      <Header />
+      <Header phone={footerData?.phone ?? contactData?.phone} schedule={footerData?.schedule ?? contactData?.schedule} />
       <Hero data={heroData} />
       <ProjectsList projects={projectsData} />
       <NewsSection news={newsData} />
