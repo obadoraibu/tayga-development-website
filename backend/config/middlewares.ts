@@ -1,8 +1,19 @@
-export default [
+export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: [
+        env('FRONTEND_URL', 'https://taiga-development.ru'),
+        'https://www.taiga-development.ru',
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+      ],
+      credentials: true,
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',

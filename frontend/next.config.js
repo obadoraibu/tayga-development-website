@@ -28,8 +28,8 @@ const nextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
-      // Сюда позже добавим домен продакшн сервера, например:
-      // { protocol: 'https', hostname: 'api.tayga-dev.ru', pathname: '/uploads/**' }
+      // Для продакшена: добавьте домен, с которого отдаются медиа (тот же, что и сайт):
+      // { protocol: 'https', hostname: 'ваш-домен.ru', pathname: '/uploads/**' },
     ],
   },
 }

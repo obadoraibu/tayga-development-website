@@ -8,6 +8,9 @@ import axios from 'axios';
 export default {
   async afterCreate(event: any) {
     const { result } = event;
+    const emailTo = process.env.MAIL_TO;
+    const emailFrom = process.env.MAIL_FROM || process.env.SMTP_USER;
+    const emailReplyTo = process.env.MAIL_REPLY_TO || process.env.SMTP_USER;
 
     // 1. Отправка в Bitrix24
     try {
@@ -33,7 +36,43 @@ export default {
       // Не прерываем выполнение, продолжаем отправку в M2Lab
     }
 
-    // 2. Отправка в M2Lab
+    // 2. Отправка письма на почту
+    try {
+      if (emailTo && emailFrom) {
+        const subject = `Заявка с сайта Tayga Development: ${result.name}`;
+        const message = result.message || 'Без комментария';
+        const textBody = [
+          `Имя: ${result.name}`,
+          `Телефон: ${result.phone}`,
+          `Сообщение: ${message}`,
+          `ID заявки: ${result.id}`,
+        ].join('\n');
+
+        const htmlBody = `
+          <p><strong>Имя:</strong> ${result.name}</p>
+          <p><strong>Телефон:</strong> ${result.phone}</p>
+          <p><strong>Сообщение:</strong> ${message}</p>
+          <p><strong>ID заявки:</strong> ${result.id}</p>
+        `;
+
+        await strapi.plugin('email').service('email').send({
+          to: emailTo,
+          from: emailFrom,
+          replyTo: emailReplyTo,
+          subject,
+          text: textBody,
+          html: htmlBody,
+        });
+        strapi.log.info(`[Lead] Lead ${result.id} sent to email ${emailTo}`);
+      } else {
+        strapi.log.warn('[Lead] MAIL_TO or MAIL_FROM not configured, skipping email notification');
+      }
+    } catch (err: any) {
+      strapi.log.error(`[Lead] Failed to send lead ${result.id} to email:`, err.message);
+      // Не прерываем выполнение, заявка уже сохранена в Strapi
+    }
+
+    // 3. Отправка в M2Lab
     try {
       if (process.env.M2LAB_API_URL && process.env.M2LAB_API_KEY) {
         await axios.post(
