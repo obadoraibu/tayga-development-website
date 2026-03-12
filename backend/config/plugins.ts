@@ -1,4 +1,8 @@
 export default ({ env }) => ({
+  // Отключаем cloud-плагин: его виджет тянет контент извне и даёт "Couldn't load widget content"
+  'strapi-cloud': {
+    enabled: false,
+  },
   email: {
     config: {
       provider: 'nodemailer',
