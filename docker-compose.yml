@@ -5,9 +5,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      args:
-        # Нужен при сборке образа, чтобы админка ходила на /admin/... (не на /content-manager)
-        PUBLIC_URL: ${PUBLIC_URL:-https://taiga-development.ru}
     container_name: tayga-backend
     restart: unless-stopped
     env_file:
@@ -18,7 +15,6 @@ services:
       - PORT=1337
       - DATABASE_CLIENT=sqlite
       - DATABASE_FILENAME=/app/.tmp/data.db
-      - PUBLIC_URL=${PUBLIC_URL:-https://taiga-development.ru}
     volumes:
       - ./backend/.tmp:/app/.tmp
       - ./backend/public/uploads:/app/public/uploads
