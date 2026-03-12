@@ -5,6 +5,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      # URL бэкенда зашивается в админку при сборке. Берётся из backend/.env или задайте при сборке.
+      args:
+        STRAPI_ADMIN_BACKEND_URL: ${STRAPI_ADMIN_BACKEND_URL:-https://taiga-development.ru}
     container_name: tayga-backend
     restart: unless-stopped
     env_file:

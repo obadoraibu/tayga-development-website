@@ -94,6 +94,18 @@ NEXT_PUBLIC_STRAPI_MEDIA_URL=https://tayga-dev.ru
 
 **Важно:** используется один домен: и сайт, и API (nginx проксирует `/api` и `/uploads` на Strapi).
 
+### Сборка backend и админка Strapi
+
+В `backend/.env` должен быть указан **`STRAPI_ADMIN_BACKEND_URL`** (ваш домен без слэша в конце). Он нужен и при **сборке** Docker-образа: в админку зашивается URL API. Если при сборке переменной нет, админка будет обращаться на `localhost:1337` и не заработает.
+
+В `docker-compose.yml` по умолчанию при сборке подставляется `https://taiga-development.ru`. Если домен другой, создайте в **корне проекта** файл `.env` и укажите:
+
+```env
+STRAPI_ADMIN_BACKEND_URL=https://ваш-домен.ru
+```
+
+После изменения URL обязательно пересоберите образ: `docker compose build backend --no-cache && docker compose up -d`.
+
 ---
 
 ## 4. Данные Strapi (если переносите с другого сервера)

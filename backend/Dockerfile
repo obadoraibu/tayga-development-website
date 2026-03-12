@@ -18,7 +18,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build Strapi
+# URL бэкенда зашивается в админку при сборке. Без него админка стучится на localhost:1337 и не работает.
+ARG STRAPI_ADMIN_BACKEND_URL
+ENV STRAPI_ADMIN_BACKEND_URL=${STRAPI_ADMIN_BACKEND_URL}
 ENV NODE_ENV=production
 RUN npm run build
 
