@@ -18,6 +18,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Публичный URL для сборки админки (base path /admin). Передаётся через build arg.
+ARG PUBLIC_URL
+ENV PUBLIC_URL=${PUBLIC_URL}
+
 # Build Strapi (admin panel build is memory-heavy; increase Node heap)
 ENV NODE_ENV=production
 ENV NODE_OPTIONS=--max-old-space-size=4096

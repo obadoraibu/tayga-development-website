@@ -44,7 +44,10 @@ export default ({ env }) => {
     },
     sqlite: {
       connection: {
-        filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        // Use explicit path in Docker so DB is in mounted /app/.tmp
+        filename: env('DATABASE_FILENAME')
+          ? path.resolve(env('DATABASE_FILENAME'))
+          : path.join(process.cwd(), '.tmp', 'data.db'),
       },
       useNullAsDefault: true,
     },

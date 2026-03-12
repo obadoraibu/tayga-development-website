@@ -5,6 +5,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      args:
+        # Нужен при сборке образа, чтобы админка ходила на /admin/... (не на /content-manager)
+        PUBLIC_URL: ${PUBLIC_URL:-https://taiga-development.ru}
     container_name: tayga-backend
     restart: unless-stopped
     env_file:
@@ -14,6 +17,8 @@ services:
       - HOST=0.0.0.0
       - PORT=1337
       - DATABASE_CLIENT=sqlite
+      - DATABASE_FILENAME=/app/.tmp/data.db
+      - PUBLIC_URL=${PUBLIC_URL:-https://taiga-development.ru}
     volumes:
       - ./backend/.tmp:/app/.tmp
       - ./backend/public/uploads:/app/public/uploads
@@ -26,9 +31,9 @@ services:
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "1337"]
       interval: 15s
-      timeout: 5s
-      retries: 5
-      start_period: 120s
+      timeout: 10s
+      retries: 10
+      start_period: 300s
 
   frontend:
     build:
