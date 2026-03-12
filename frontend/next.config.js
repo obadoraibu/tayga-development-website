@@ -28,8 +28,11 @@ const nextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
-      // Для продакшена: добавьте домен, с которого отдаются медиа (тот же, что и сайт):
-      // { protocol: 'https', hostname: 'ваш-домен.ru', pathname: '/uploads/**' },
+      {
+        protocol: 'https',
+        hostname: 'taiga-development.ru',
+        pathname: '/uploads/**',
+      },
     ],
   },
 }
