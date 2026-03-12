@@ -174,6 +174,7 @@ export async function getProjects() {
         }
       }
     }
+    if (data?.error) return [];
     return data.data || [];
   } catch (error) {
     console.error('[API] Error fetching projects:', error);

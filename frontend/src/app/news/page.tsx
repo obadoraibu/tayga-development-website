@@ -5,6 +5,8 @@ import Link from "next/link";
 import { getNews } from "@/lib/api";
 import { mapStrapiNews } from "@/lib/strapiHelpers";
 
+export const dynamic = 'force-dynamic';
+
 export default async function NewsPage() {
   let allNews = [];
   

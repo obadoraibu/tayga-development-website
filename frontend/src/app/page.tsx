@@ -7,7 +7,8 @@ import ContactSection from "@/components/sections/ContactSection";
 import { getProjects, getNews, getHero, getFooter, getContact } from "@/lib/api";
 import { mapStrapiProject, mapStrapiNews, mapStrapiHero, mapStrapiFooter, mapStrapiContact } from "@/lib/strapiHelpers";
 
-// Отключаем кэш для разработки (в продакшене установить 60)
+// Динамический рендер: данные запрашиваются при обращении, а не при сборке (нет 502 и no-store ошибок при build)
+export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function Home() {
