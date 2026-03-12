@@ -29,8 +29,8 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Install wget for healthcheck
-RUN apk add --no-cache wget
+# Install wget and netcat for healthcheck (nc -z checks port is open)
+RUN apk add --no-cache wget netcat-openbsd
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 strapi
