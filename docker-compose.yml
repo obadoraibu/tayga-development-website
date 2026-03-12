@@ -35,13 +35,17 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_STRAPI_API_URL: http://backend:1337
+        NEXT_PUBLIC_STRAPI_MEDIA_URL: https://taiga-development.ru
     container_name: tayga-frontend
     restart: unless-stopped
     env_file:
       - ./frontend/.env.production
     environment:
       - NODE_ENV=production
-      # NEXT_PUBLIC_* задаются в frontend/.env.production (на сервере — https://ваш-домен)
+      - NEXT_PUBLIC_STRAPI_API_URL=http://backend:1337
+      - NEXT_PUBLIC_STRAPI_MEDIA_URL=https://taiga-development.ru
     ports:
       - "3000:3000"
     depends_on:

@@ -15,7 +15,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build Next.js (backend is not available during build; generateStaticParams returns [] on API failure)
+# NEXT_PUBLIC_ переменные вшиваются при сборке — задаём их явно
+ARG NEXT_PUBLIC_STRAPI_API_URL=http://backend:1337
+ARG NEXT_PUBLIC_STRAPI_MEDIA_URL=https://taiga-development.ru
+ENV NEXT_PUBLIC_STRAPI_API_URL=${NEXT_PUBLIC_STRAPI_API_URL}
+ENV NEXT_PUBLIC_STRAPI_MEDIA_URL=${NEXT_PUBLIC_STRAPI_MEDIA_URL}
+
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 RUN npm run build
