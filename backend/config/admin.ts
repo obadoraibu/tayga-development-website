@@ -15,8 +15,7 @@ export default ({ env }) => ({
     // false = админка по http://IP:1337/admin работает. Когда будет HTTPS — задайте ADMIN_COOKIE_SECURE=true в .env
     cookie: {
       secure: env.bool('ADMIN_COOKIE_SECURE', false),
-      // path='/' чтобы cookie отправлялась и на /information, /content-manager (nginx реврайт в /admin/...)
-      path: '/',
+      path: '/',  // нужно для админки на поддомене admin.taiga-development.ru
     },
   },
   apiToken: {
