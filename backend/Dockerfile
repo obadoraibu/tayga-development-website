@@ -18,8 +18,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build Strapi
+# Build Strapi (admin panel build is memory-heavy; increase Node heap)
 ENV NODE_ENV=production
+ENV NODE_OPTIONS=--max-old-space-size=4096
 RUN npm run build
 
 # Production image, copy all the files and run Strapi

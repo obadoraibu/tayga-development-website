@@ -22,12 +22,13 @@ services:
       - "1337:1337"
     networks:
       - tayga-network
+    # Strapi 5 has no built-in /_health; check that the server responds (any HTTP response = healthy)
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:1337/_health"]
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:1337/api', (r) => { r.resume(); process.exit(r.statusCode < 500 ? 0 : 1); }).on('error', () => process.exit(1));\""]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 60s
+      retries: 5
+      start_period: 90s
 
   frontend:
     build:
